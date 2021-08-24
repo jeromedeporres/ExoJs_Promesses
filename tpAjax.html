@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP AJAX 01</title>
+</head>
+
+<body>
+    <h1>Les Promesses</h1>
+
+</body>
+<script>
+    function maFonctionAsynchrome() {
+        promesse = new Promise((resolve,reject)=>{
+            url = "https://www.toutjavascript.com/api/get-my-ip.php";
+            xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.onload = () => resolve(xhr.responseText);
+            xhr.onerror = () => reject(xhr.statusText);
+            xhr.send(null);
+        });
+        promesse.then((verdict)=>{
+            alert(verdict);
+        });
+        promesse.catch((verdict)=>{
+            alert(verdict);
+        });
+    }
+</script>
+<input type="button" onclick="maFonctionAsynchrome()" value="Verifiez votre adresse IP">
+
+</html>

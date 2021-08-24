@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promesse AJAX01</title>
+</head>
+
+<body>
+    <h1>Les Promesses</h1>
+    <script>
+        document.write('<p>Demarrage de deux voitures</p>');
+        document.write('<p>Porche 911 Vs Ferrari Testarossa</p>');
+        //creation de la promesse
+        var maPromesse = new Promise(function(resolve, reject) {
+            // delai de 5 seconds
+            setTimeout(function() {
+                if (Math.random()>0.5) {
+                    resolve("la Porche est plus rapide");
+
+                } else {
+                    reject("La ferrari est plus rapide");
+                }
+            },5000);
+        });
+        document.write("control radar des 5 secondes");
+        //compterendudu functionnement de la promesse
+        maPromesse.then(function(verdict) {
+            //cas ou la porche est plsu rapide
+            alert("Verdict : " + verdict);
+        });
+        maPromesse.catch(function(verdict) {
+            //cas ou la ferrari est plsu rapide
+            alert("Verdict : " + verdict);
+        });
+    </script>
+</body>
+
+</html>
